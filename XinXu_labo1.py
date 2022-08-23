@@ -1,5 +1,6 @@
 # Xin Xu #2194517
 
+# import fomction ramdom pour brasser le dé
 import random
 
 class Des:
@@ -8,24 +9,38 @@ class Des:
         self.de_1 = valeur1
         self.de_2 = valeur2
 
+#on brasse les dés dont la valeur est un nombre aléatoir entre 1 et nombre de faces
     def brasser(self):
         self.de_1 = random.randint(1, self.nb_faces)
         self.de_2 = random.randint(1, self.nb_faces)
-    
+
+#une fonction pour calculer la valeur totale   
     def total(self):
         return self.de_1 + self.de_2
+
 
     def comparer(self, d2):
         return self.total() > d2.total()
 
     def __str__(self):
-        return f"nombre de faces({self.nb_faces})\tdé_1 ({self.de_1})\tdé2 ({self.de_2})"
+        return f"nombre de faces({self.nb_faces})\tdé_1({self.de_1})\tdé2({self.de_2})"
 
-nbFaces = int(input("Entrez le nombre de faces voulu(6 à 24): "))
-valeur1 = int(input(f"Entrez l'état du dé_1(1 à {nbFaces}): "))
-valeur2 = int(input(f"Entrez l'état du dé_2(1 à {nbFaces}): "))
+#fonction initialiser
+def initial():
+    condition = True
+    while condition:
+        nbFaces = int(input("Entrez le nombre de faces voulu(6 à 24): "))
+        valeur1 = int(input(f"Entrez l'état du dé_1(1 à {nbFaces}): "))
+        valeur2 = int(input(f"Entrez l'état du dé_2(1 à {nbFaces}): "))
+        if 6 <= nbFaces <= 24 and 1 <= valeur1 <= nbFaces and 1 <= valeur2 <= nbFaces:
+            condition = False
+        else:
+            print("Entrées invalides")
+    return nbFaces, valeur1, valeur2
+
+nbFaces, valeur1, valeur2 = initial()
 de_utilisateur = Des(nbFaces, valeur1, valeur2)
-de_sys = Des(nbFaces)
+de_sys = Des(de_utilisateur.nb_faces)
 
 def menu(d_u, d_s):
     condition = True
