@@ -38,10 +38,12 @@ def initial():
             print("Entrées invalides")
     return nbFaces, valeur1, valeur2
 
+#valeur de données intiales
 nbFaces, valeur1, valeur2 = initial()
 de_utilisateur = Des(nbFaces, valeur1, valeur2)
 de_sys = Des(de_utilisateur.nb_faces)
 
+#menu pour brasser et comparer
 def menu(d_u, d_s):
     condition = True
     while condition:
@@ -63,7 +65,7 @@ def menu(d_u, d_s):
         else:
             print("Votre choix est invalide, veuillez choisir 1 à 3 ")
 
-
+#programme principal
 menu(de_utilisateur,de_sys)
 
 
@@ -71,17 +73,4 @@ menu(de_utilisateur,de_sys)
 
 
 
-
-"""
-d = Des(24)
-print(d.nb_faces)
-print(d.de_1)
-print(d.de_2)
-d2 = Des(6, 3, 2)
-print(d.comparer(d2))
-for i in range(30):
-    d.brasser()
-    print(d.de_1, end = "\t")
-    print(d.de_2)
-"""
 
