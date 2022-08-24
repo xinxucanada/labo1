@@ -20,10 +20,10 @@ class Des:
 
 
     def comparer(self, d2):
-        return self.total() > d2.total()
+        return self.total() >= d2.total()
 
     def __str__(self):
-        return f"nombre de faces({self.nb_faces})\tdé_1({self.de_1})\tdé2({self.de_2})"
+        return f"{self.de_1}\t{self.de_2}"
 
 #fonction initialiser
 def initial():
@@ -47,21 +47,29 @@ de_sys = Des(de_utilisateur.nb_faces)
 def menu(d_u, d_s):
     condition = True
     while condition:
-        choix = input("1. Brasser les dés #(affiche le résultat des deux paires de dés)\n"+
-        "2. Comparer les dés #(indique si la paire de l'utilisateur est supérieure ou non)\n"+
-        "3. Sortir #(sort de l'exécution du programme)\n")
+        choix = input("*" * 80 +"\n"+"1. Brasser les dés #(affiche le résultat des deux paires de dés)\n" +
+        "2. Comparer les dés #(indique si la paire de l'utilisateur est supérieure ou non)\n" +
+        "3. Sortir #(sort de l'exécution du programme)\n"+ "*" * 80 + "\n" +
+        "Entrez votre choix:  ")
         if choix == "3":
+            print("À la prochaine! ")
             condition = False
         elif choix == "1":
+            print("*"*30 + "Fonction brassage" + "*"*33)
+            print()
             d_u.brasser()
             d_s.brasser()
-            print(f"L'état des dés de l'utilisateur: {d_u}")
-            print(f"L'état des dés du système: {d_s}")
+            print(f"L'état des dés de l'utilisateur:\t{d_u}")
+            print(f"L'état des dés du système:\t\t{d_s}")
+            print()
         elif choix == "2":
+            print("*"*30 + "Fonction comparer" + "*"*33)
+            print()
             if d_u.comparer(d_s):
-                print("La paire de l'utilisateur est supérieure que la paire du système. ")
+                print("La valeur de la paire de l'utilisateur est supérieur ou égale. ")
             else:
-                print("La paire de l'utilisateur n'est pas supérieure que la paire du système. ")
+                print("La valeur de la paire de l'utilisateur est inférieure. ")
+            print()
         else:
             print("Votre choix est invalide, veuillez choisir 1 à 3 ")
 
