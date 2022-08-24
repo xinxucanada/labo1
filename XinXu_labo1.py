@@ -1,7 +1,8 @@
-# Xin Xu #2194517
+# Xin Xu # 2194517
 
 # import fomction ramdom pour brasser le dé
 import random
+
 
 class Des:
     def __init__(self, nb_faces, valeur1 = 0, valeur2 = 0) -> None:
@@ -9,12 +10,12 @@ class Des:
         self.de_1 = valeur1
         self.de_2 = valeur2
 
-#on brasse les dés dont la valeur est un nombre aléatoir entre 1 et nombre de faces
+# on brasse les dés dont la valeur est un nombre aléatoir entre 1 et nombre de faces
     def brasser(self):
         self.de_1 = random.randint(1, self.nb_faces)
         self.de_2 = random.randint(1, self.nb_faces)
 
-#une fonction pour calculer la valeur totale   
+# une fonction pour calculer la valeur totale   
     def total(self):
         return self.de_1 + self.de_2
 
@@ -25,7 +26,8 @@ class Des:
     def __str__(self):
         return f"{self.de_1}\t{self.de_2}"
 
-#fonction initialiser
+
+# fonction initialiser
 def initial():
     condition = True
     while condition:
@@ -38,12 +40,13 @@ def initial():
             print("Entrées invalides")
     return nbFaces, valeur1, valeur2
 
-#valeur de données intiales
+# valeur de données intiales
 nbFaces, valeur1, valeur2 = initial()
 de_utilisateur = Des(nbFaces, valeur1, valeur2)
 de_sys = Des(de_utilisateur.nb_faces)
 
-#menu pour brasser et comparer
+
+# menu pour brasser et comparer
 def menu(d_u, d_s):
     condition = True
     while condition:
@@ -73,7 +76,8 @@ def menu(d_u, d_s):
         else:
             print("Votre choix est invalide, veuillez choisir 1 à 3 ")
 
-#programme principal
+
+# programme principal
 menu(de_utilisateur,de_sys)
 
 
