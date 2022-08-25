@@ -40,6 +40,7 @@ def initial():
             print("Entrées invalides")
     return nbFaces, valeur1, valeur2
 
+#Svp ne pas mettre de code entre les définitions de fonction. Placer ce code dans une fonction.
 # valeur de données intiales
 nbFaces, valeur1, valeur2 = initial()
 de_utilisateur = Des(nbFaces, valeur1, valeur2)
