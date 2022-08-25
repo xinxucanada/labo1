@@ -27,7 +27,7 @@ class Des:
         return f"{self.de_1}\t{self.de_2}"
 
 # fonction initialiser
-def initial():
+def initiation_des():
     print('*'*30+'Initial'+'*'*33)
     condition = True
     while condition:
@@ -43,7 +43,7 @@ def initial():
 #Svp ne pas mettre de code entre les définitions de fonction. Placer ce code dans une fonction.
 # valeur de données intiales
 def valeur_intial():
-    nbFaces, valeur1, valeur2 = initial()
+    nbFaces, valeur1, valeur2 = initiation_des()
     de_utilisateur = Des(nbFaces, valeur1, valeur2)
     de_sys = Des(de_utilisateur.nb_faces)
     return de_utilisateur, de_sys
