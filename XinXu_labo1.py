@@ -51,7 +51,8 @@ def valeur_intial():
 
 
 # menu pour brasser et comparer
-def menu(d_u, d_s):
+def menu():
+    d_u, d_s = valeur_intial()
     condition = True
     while condition:
         choix = input("*" * 80 +"\n"+"1. Brasser les dés #(affiche le résultat des deux paires de dés)\n" +
@@ -82,8 +83,8 @@ def menu(d_u, d_s):
 
 
 # programme principal
-d_u, d_s = valeur_intial()
-menu(d_u, d_s)
+
+menu()
 
 
 
