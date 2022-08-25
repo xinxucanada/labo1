@@ -42,9 +42,12 @@ def initial():
 
 #Svp ne pas mettre de code entre les définitions de fonction. Placer ce code dans une fonction.
 # valeur de données intiales
-nbFaces, valeur1, valeur2 = initial()
-de_utilisateur = Des(nbFaces, valeur1, valeur2)
-de_sys = Des(de_utilisateur.nb_faces)
+def valeur_intial():
+    nbFaces, valeur1, valeur2 = initial()
+    de_utilisateur = Des(nbFaces, valeur1, valeur2)
+    de_sys = Des(de_utilisateur.nb_faces)
+    return de_utilisateur, de_sys
+
 
 
 # menu pour brasser et comparer
@@ -79,7 +82,8 @@ def menu(d_u, d_s):
 
 
 # programme principal
-menu(de_utilisateur,de_sys)
+d_u, d_s = valeur_intial()
+menu(d_u, d_s)
 
 
 
