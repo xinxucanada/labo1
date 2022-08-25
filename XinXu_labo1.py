@@ -26,9 +26,9 @@ class Des:
     def __str__(self):
         return f"{self.de_1}\t{self.de_2}"
 
-
 # fonction initialiser
 def initial():
+    print('*'*30+'Initial'+'*'*33)
     condition = True
     while condition:
         nbFaces = int(input("Entrez le nombre de faces voulu(6 à 24): "))
