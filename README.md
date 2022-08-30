@@ -1,6 +1,6 @@
 Nom
 
-(labo1 semaine1)
+(labo1 semaine2)
 Brassage de dés
 
 #Description
