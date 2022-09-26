@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Labo1avecJS</title>
     <style>
         * {
             padding: 0;
@@ -14,7 +14,7 @@
             display: inline-block;
             width: 30px;
             height: 30px;
-            background-color: rgb(245, 182, 11);
+            /* background-color: rgb(245, 182, 11); */
             font-size: 20px;
             line-height: 30px;
             margin: 5px;
@@ -28,36 +28,105 @@
         .des p, .des button, .des input {
             margin-top: 5px;
         }
+        span input {
+            width: 30px;
+            height: 30px;
+            background-color: aquamarine;
+            text-align: center;
+            font-style: 25px;
+            line-height: 30;
+        }
+        h4 {
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="des">
         <p>Entrez le nombre de faces des dés</p>
-        <input type="text" name="" id="" value="6"> <i>Entrez de 6 à 24</i> <br>
+        <input type="text" name="" id="nb" value="6"> <i>Entrez de 6 à 24</i> <br>
         <button id="lancer">Lancer</button>
+        <button id="comparer">Comparer</button>
         <p>Des de système</p>
-        <span>1</span>
-        <span>2</span>
+        <span><input type="text" value="0" id="value"></span>
+        <span><input type="text" value="0" id="value"></span>
         <br>
         <p>Des de l'utilisateur</p>
-        <span>3</span>
-        <span>4</span>
+        <span><input type="text" value="0" id="value"></span>
+        <span><input type="text" value="0" id="value"></span>
+        <h4 class="result">Qui gagne?</h4>
+        
     </div>
     <script>
-        var input = document.querySelector('input');
-        var btn = document.querySelector('button');
-        var spans = document.querySelectorAll('span');
-        var i = document.querySelector('i')
-        var nb_face = input.value;
+        var input = document.querySelector('#nb');
+        var lancer = document.querySelector('#lancer');
+        var comparer = document.querySelector('#comparer');
+        var values = document.querySelectorAll('#value');
+        var i = document.querySelector('i');
+        var result = document.querySelector('h4');
+        
         input.onblur = function() {
+            let nb_face = parseInt(input.value);
             if (nb_face > 24 || nb_face < 6){
                 this.style.color = 'red';
                 i.innerHTML = 'Entrée invalide';
+                i.style.color = 'red';
             } else {
                 this.style.color = 'black';
                 i.innerHTML = 'Entrez de 6 à 24';
+                i.style.color = 'black';
             }
         }
+        function randomIntInclusive(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        // console.log(randomIntInclusive(1, 10));
+
+        function Des(nbFace, d1, d2) {
+            this.nbFace = parseInt(nbFace);
+            this.d1 = d1;
+            this.d2 = d2;
+            this.lancer = function(){
+                this.d1 = randomIntInclusive(1, this.nbFace);
+                this.d2 = randomIntInclusive(1, this.nbFace);
+            this.total = this.d1 + this.d2;
+            }    
+        }
+
+        lancer.onclick = function() {
+            let nbFace = parseInt(input.value);
+            let d_s = new Des(nbFace,0,0);
+            let d_u = new Des(nbFace,0,0);
+            d_s.lancer();
+            d_u.lancer();
+            values[0].value = d_s.d1;
+            values[1].value = d_s.d2;
+            values[2].value = d_u.d1;
+            values[3].value = d_u.d2;
+        }
+
+        comparer.onclick = function() {
+            if ( parseInt(values[0].value) + parseInt(values[1].value) > parseInt(values[2].value) + parseInt(values[3].value)) {
+                result.innerHTML = 'Sys gagne! Tu as perdu!';
+                result.style.color = 'red';
+
+            } else {
+                result.innerHTML = 'WOW!! Tu gagne!!';
+                result.style.color = 'green';
+            }
+            for (let i = 0; i < values.length; i++) {
+                console.log(values[i].value);
+            }
+
+        }
+
+        // var d = new Des(6);
+        // console.log(d.nbFace);
+        // console.log(d.d1);
+        // console.log(d.d2);
+        // d.lancer()
+        // console.log(d.d1);
+        // console.log(d.d2);
 
 
 
