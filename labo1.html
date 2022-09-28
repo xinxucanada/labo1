@@ -10,6 +10,10 @@
             padding: 0;
             margin: 0;
         }
+        body {
+            width: 800px;
+            margin: 10px auto;
+        }
         .des span {
             display: inline-block;
             width: 30px;
@@ -20,6 +24,8 @@
             margin: 5px;
         }
         .des {
+            float: left;
+            /* display: inline-block; */
             margin: 50px auto;
             width: 300px;
             height: 300px;
@@ -39,6 +45,35 @@
         h4 {
             margin: 10px;
         }
+        .score {
+            float: left;
+            margin: 50px auto;
+            width: 300px;
+            display: inline-block;
+        }
+        .score table {
+            border: 1px solid beige;
+            width: 300px;
+            background-color: rgb(174, 227, 231);
+            border-collapse: collapse;
+            
+        }
+        .score th, .score td {
+            border: 1px dotted gray;
+            text-align: center;
+            font-size: 16px;
+            border-collapse: collapse;
+            color: black;
+
+        }
+        #total td {
+            font-weight: bold;
+            color: blue;
+        }
+        .score td {
+            font-size: 14px;
+            color: gray;
+        }
     </style>
 </head>
 <body>
@@ -57,6 +92,25 @@
         <h4 class="result">Qui gagne?</h4>
         
     </div>
+    <div class="score">
+        <table>
+            <thead >
+                <th>Ordinateur</th>
+                <th>utilisateur</th>
+            </thead>
+            <tbody>
+                <tr id="total">
+                    <td>
+                        0
+                    </td>
+                    <td>
+                        0
+                    </td>
+                </tr>
+               
+            </tbody>
+        </table>
+    </div>
     <script>
         var input = document.querySelector('#nb');
         var lancer = document.querySelector('#lancer');
@@ -64,6 +118,8 @@
         var values = document.querySelectorAll('#value');
         var i = document.querySelector('i');
         var result = document.querySelector('h4');
+        var tbody = document.querySelector('tbody');
+        var scoreTotal = document.querySelector('#total')
         
         input.onblur = function() {
             let nb_face = parseInt(input.value);
@@ -71,12 +127,16 @@
                 this.style.color = 'red';
                 i.innerHTML = 'Entrée invalide';
                 i.style.color = 'red';
+                lancer.disabled = true;
+                comparer.disabled = true;
             } else {
                 this.style.color = 'black';
                 i.innerHTML = 'Entrez de 6 à 24';
                 i.style.color = 'black';
             }
         }
+
+    
 
         // function pause(ms) {
         //     let debut  = new Date();
@@ -117,7 +177,9 @@
         }
 
         comparer.onclick = function() {
-            if ( parseInt(values[0].value) + parseInt(values[1].value) > parseInt(values[2].value) + parseInt(values[3].value)) {
+            let sysTotal = parseInt(values[0].value) + parseInt(values[1].value);
+            let uTotal = parseInt(values[2].value) + parseInt(values[3].value)
+            if ( sysTotal > uTotal) {
                 result.innerHTML = 'Sys gagne! Tu as perdu!';
                 result.style.color = 'red';
 
@@ -125,9 +187,26 @@
                 result.innerHTML = 'WOW!! Tu gagne!!';
                 result.style.color = 'green';
             }
-            for (let i = 0; i < values.length; i++) {
-                console.log(values[i].value);
+            var tr = document.createElement('tr');
+            var td_s = document.createElement('td');
+            td_s.innerHTML = sysTotal;
+            var td_u = document.createElement('td');
+            td_u.innerHTML = uTotal;
+            tr.appendChild(td_s);
+            tr.appendChild(td_u);
+            tbody.appendChild(tr);
+            if (sysTotal > uTotal) {
+                scoreTotal.children[0].innerHTML = 1 + parseInt(scoreTotal.children[0].innerHTML);
+            } else {
+                scoreTotal.children[1].innerHTML = 1 + parseInt(scoreTotal.children[1].innerHTML);
             }
+            
+           
+            
+
+            // for (let i = 0; i < values.length; i++) {
+            //     console.log(values[i].value);
+            // }
 
         }
 
