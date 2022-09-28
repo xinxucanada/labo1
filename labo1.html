@@ -77,6 +77,13 @@
                 i.style.color = 'black';
             }
         }
+
+        // function pause(ms) {
+        //     let debut  = new Date();
+        //     let fin;
+        //     do {fin = new Date()}
+        //     while (fin - debut < ms)
+        // }
         function randomIntInclusive(min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min)
         }
@@ -97,12 +104,16 @@
             let nbFace = parseInt(input.value);
             let d_s = new Des(nbFace,0,0);
             let d_u = new Des(nbFace,0,0);
+            
             d_s.lancer();
             d_u.lancer();
             values[0].value = d_s.d1;
             values[1].value = d_s.d2;
             values[2].value = d_u.d1;
             values[3].value = d_u.d2;
+            
+            
+            
         }
 
         comparer.onclick = function() {
@@ -127,6 +138,9 @@
         // d.lancer()
         // console.log(d.d1);
         // console.log(d.d2);
+        // console.log(new Date());
+        // pause(3000);
+        // console.log(new Date());
 
 
 
