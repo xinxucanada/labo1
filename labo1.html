@@ -162,21 +162,44 @@
             }    
         }
 
+        // lancer.onclick = function() {
+        //     let nbFace = parseInt(input.value);
+        //     let d_s = new Des(nbFace,0,0);
+        //     let d_u = new Des(nbFace,0,0);
+            
+        //     d_s.lancer();
+        //     d_u.lancer();
+        //     values[0].value = d_s.d1;
+        //     values[1].value = d_s.d2;
+        //     values[2].value = d_u.d1;
+        //     values[3].value = d_u.d2;
+            
+            
+            
+        // }
         lancer.onclick = function() {
             let nbFace = parseInt(input.value);
             let d_s = new Des(nbFace,0,0);
             let d_u = new Des(nbFace,0,0);
-            
-            d_s.lancer();
-            d_u.lancer();
-            values[0].value = d_s.d1;
-            values[1].value = d_s.d2;
-            values[2].value = d_u.d1;
-            values[3].value = d_u.d2;
-            
-            
-            
+            let time = 50;
+            let timer = setInterval(function(){
+                if (time > 0) {
+                    d_s.lancer();
+                    d_u.lancer();
+                    values[0].value = d_s.d1;
+                    values[1].value = d_s.d2;
+                    values[2].value = d_u.d1;
+                    values[3].value = d_u.d2;
+                    time--;
+                } else {
+                    time = 50;
+                    clearInterval(timer);
+                }
+               
+            }, 30)
         }
+
+
 
         comparer.onclick = function() {
             let sysTotal = parseInt(values[0].value) + parseInt(values[1].value);
